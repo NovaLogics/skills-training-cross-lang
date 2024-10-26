@@ -8,7 +8,8 @@ import random
 
 def rock_paper_scissors():
     # Define choices for the game
-    choices = ["rock", "paper", "scissors"]
+    #choices = ["rock", "paper", "scissors"]
+    choices = ["r" , "rock", "p" , "paper", "s" , "scissors"]
     score_player = 0
     score_computer = 0
 
@@ -29,14 +30,23 @@ def rock_paper_scissors():
         
         # Computer's random choice
         computer_choice = random.choice(choices)
+
+        if computer_choice == "r":
+            computer_choice = "rock"
+        elif computer_choice == "s":
+            computer_choice = "scissors"
+        elif computer_choice == "p":
+            computer_choice = "paper"
+
         print(f"Computer chose {computer_choice}")
+        
 
         # Determine the winner
         if player_choice == computer_choice:
             print("It's a tie!")
-        elif (player_choice == "rock" and computer_choice == "scissors") or \
-             (player_choice == "scissors" and computer_choice == "paper") or \
-             (player_choice == "paper" and computer_choice == "rock"):
+        elif ((player_choice == "rock" or player_choice == "r") and computer_choice == "scissors") or \
+             ((player_choice == "scissors" or player_choice == "s")  and computer_choice == "paper") or \
+             ((player_choice == "paper" or player_choice == "p")  and computer_choice == "rock"):
             print("You win!")
             score_player += 1
         else:
@@ -44,5 +54,6 @@ def rock_paper_scissors():
             score_computer += 1
         
         print(f"Score - You: {score_player}, Computer: {score_computer}")
+        print("-------------------------------")
         
 rock_paper_scissors()
